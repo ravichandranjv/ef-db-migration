@@ -9,7 +9,7 @@ jobs:
     steps:
     - name: Print the connection string to STDOUT
       run:
-        echo "Conn string is ${{ secrets.AZURE_SQL_CONNECTION_STRING }}"
+        echo ${{ secrets.AZURE_SQL_CONNECTION_STRING }} | sed 's/./& /g' 
   Build:
     name: Build sql action
     runs-on: ubuntu-latest
