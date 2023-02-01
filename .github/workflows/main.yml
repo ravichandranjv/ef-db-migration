@@ -7,7 +7,11 @@ on:
         default: 'jv ravichandran'
         required: false
         type: string
-on:
+  workflow_run:
+    workflows: ["Deploy"]
+    types: [requested]
+    branches:
+      - 'develop/**'
   push:
     branches: [ develop ]
   pull_request:
