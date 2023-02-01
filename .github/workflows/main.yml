@@ -2,15 +2,18 @@ name: Deploy EF Azure Database
 on:
   push:
     branches: [ develop ]
-env:
-  connectionstring: '${{ secrets.AZURE_SQL_CONNECTION_STRING }}'
 jobs:
   print-connstringS:
     name: Print connection
     runs-on: ubuntu-latest
     steps:
     - name: Print the connection string to STDOUT
-      run: echo The connection string is $connectionstring
+    shell: bash
+    env:
+      CONNECTION_STRING: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
+    run:|
+      echo The connection string is 
+      echo $CONNECTION_STRING
   Build:
     name: Build sql action
     runs-on: ubuntu-latest
