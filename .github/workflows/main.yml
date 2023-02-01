@@ -9,8 +9,6 @@ jobs:
     steps:
     - name: Check out repo
       uses: actions/checkout@v3
-    -name: Azure login
-      uses: azure/login@v1
     - name: Azure SQL Deploy
       uses: azure/sql-action@v2
       with:        
