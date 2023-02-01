@@ -23,7 +23,7 @@ jobs:
       - name: Print the USER name to STDOUT
         run: echo The username is ${{ inputs.username }}
   Deploy:
-    runs_on: windows
+    runs_on: ubuntu-latest
     steps:
       - name: Check out repo
         uses: actions/checkout@v2
