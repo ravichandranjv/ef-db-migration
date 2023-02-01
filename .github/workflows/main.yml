@@ -2,6 +2,8 @@ name: Deploy EF Azure Database
 on:
   push:
     branches: [ develop ]
+env:
+  connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
 jobs:
   print-connstringS:
     name: Print connection
@@ -12,8 +14,6 @@ jobs:
   Build:
     name: Build sql action
     runs-on: ubuntu-latest
-    env:
-      connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
     steps:
     - name: Check out repo
       uses: actions/checkout@v3
