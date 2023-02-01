@@ -8,13 +8,11 @@ on:
         required: false
         type: string
   workflow_run:
-    workflows: ["Deploy"]
+    workflows: ["Build"]
     types: [requested]
     branches:
       - 'develop/**'
   push:
-    branches: [ develop ]
-  pull_request:
     branches: [ develop ]
 jobs:
   print-username:
@@ -23,19 +21,14 @@ jobs:
     steps:
     - name: Print the USER name to STDOUT
       run: echo The username is ${{ inputs.username }}
-  Deploy:
-    name: Check out repo
+  Build:
+    name: Build sql action
     runs-on: ubuntu
     steps:
-    - name: Check out repo
-      uses: actions/checkout@v2
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v1.4.0
-      with:
-        dotnet-version: '3.1.100' 
-    - name: Restore dependencies 
-      working-directory: deploy-db
-      run: dotnet restore      
-    - name: Deploy
-      working-directory: deploy-db
-      run: dotnet run
+    - name: Azure SQL Deploy
+      - uses: Azure/sql-action@v2
+      - uses: actions/checkout@v3
+      with:        
+        connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
+        path: './Database.sqlproj'
+        action: 'publish'
