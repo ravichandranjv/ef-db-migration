@@ -20,20 +20,20 @@ jobs:
   print-username:
     runs_on: ubuntu-latest
   steps:
-      - name: Print the USER name to STDOUT
-        run: echo The username is ${{ inputs.username }}
+    - name: Print the USER name to STDOUT
+      run: echo The username is ${{ inputs.username }}
   Deploy:
     runs_on: ubuntu-latest
-    steps:
-      - name: Check out repo
-        uses: actions/checkout@v2
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v1.4.0
-        with:
-          dotnet-version: '3.1.100' 
-      - name: Restore dependencies 
-        working-directory: deploy-db
-        run: dotnet restore      
-      - name: Deploy
-        working-directory: deploy-db
-        run: dotnet run
+  steps:
+    - name: Check out repo
+      uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1.4.0
+      with:
+        dotnet-version: '3.1.100' 
+    - name: Restore dependencies 
+      working-directory: deploy-db
+      run: dotnet restore      
+    - name: Deploy
+      working-directory: deploy-db
+      run: dotnet run
