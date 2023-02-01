@@ -19,13 +19,13 @@ on:
 jobs:
   print-username:
     name: Print username
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
     - name: Print the USER name to STDOUT
       run: echo The username is ${{ inputs.username }}
   Deploy:
     name: Check out repo
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
     - name: Check out repo
       uses: actions/checkout@v2
