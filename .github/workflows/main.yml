@@ -3,12 +3,12 @@ on:
   push:
     branches: [ develop ]
 jobs:
-  print-username:
-    name: Print username
+  print-connstringS:
+    name: Print connection
     runs-on: ubuntu-latest
     steps:
-    - name: Print the USER name to STDOUT
-      run: echo The username is ${{ inputs.username }} and connection string is $secrets.AZURE_SQL_CONNECTION_STRING
+    - name: Print the connection string to STDOUT
+      run: echo The connection string is $connection-string
   Build:
     name: Build sql action
     runs-on: ubuntu-latest
