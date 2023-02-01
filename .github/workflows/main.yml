@@ -13,6 +13,7 @@ jobs:
       CONNECTION_STRING: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
     run:
       echo The connection string is 
+    run:
       echo $CONNECTION_STRING
   Build:
     name: Build sql action
