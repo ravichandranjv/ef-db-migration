@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Print the USER name to STDOUT
-      run: echo The username is ${{ inputs.username }} and connection string is ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
+      run: echo The username is ${ inputs.username } and connection string is ${ secrets.AZURE_SQL_CONNECTION_STRING }
   Build:
     name: Build sql action
     runs-on: ubuntu-latest
@@ -30,6 +30,6 @@ jobs:
     - name: Azure SQL Deploy
       uses: azure/sql-action@v2
       with:        
-        connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
+        connection-string: ${ secrets.AZURE_SQL_CONNECTION_STRING }
         path: './Database.sqlproj'
         action: 'publish'
