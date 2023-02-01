@@ -8,10 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Print the connection string to STDOUT
-      env:
-        CONNECTION_STRING: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
       run:
-        echo $CONNECTION_STRING
+        echo ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
   Build:
     name: Build sql action
     runs-on: ubuntu-latest
