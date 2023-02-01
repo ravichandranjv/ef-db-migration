@@ -18,13 +18,15 @@ on:
     branches: [ develop ]
 jobs:
   print-username:
+    name: Print username
     runs_on: ubuntu-latest
-  steps:
+    steps:
     - name: Print the USER name to STDOUT
       run: echo The username is ${{ inputs.username }}
   Deploy:
+    name: Check out repo
     runs_on: ubuntu-latest
-  steps:
+    steps:
     - name: Check out repo
       uses: actions/checkout@v2
     - name: Setup .NET Core
