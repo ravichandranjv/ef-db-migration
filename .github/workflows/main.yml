@@ -17,17 +17,17 @@ on:
 jobs:
   print-username:
     name: Print username
-    runs-on: ubuntu
+    runs-on: ubuntu-latest
     steps:
     - name: Print the USER name to STDOUT
       run: echo The username is ${{ inputs.username }}
   Build:
     name: Build sql action
-    runs-on: ubuntu
+    runs-on: ubuntu-latest
     steps:
     - name: Azure SQL Deploy
-      - uses: Azure/sql-action@v2
-      - uses: actions/checkout@v3
+      uses: Azure/sql-action@v2
+      uses: actions/checkout@v3
       with:        
         connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
         path: './Database.sqlproj'
