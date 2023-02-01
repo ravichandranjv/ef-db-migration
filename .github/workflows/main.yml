@@ -3,14 +3,14 @@ on:
   push:
     branches: [ develop ]
 env:
-  connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
+  connectionstring: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
 jobs:
   print-connstringS:
     name: Print connection
     runs-on: ubuntu-latest
     steps:
     - name: Print the connection string to STDOUT
-      run: echo The connection string is $connection-string
+      run: echo The connection string is $connectionstring
   Build:
     name: Build sql action
     runs-on: ubuntu-latest
