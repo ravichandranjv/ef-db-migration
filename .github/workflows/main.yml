@@ -25,8 +25,9 @@ jobs:
     name: Build sql action
     runs-on: ubuntu-latest
     steps:
-    - name: Azure SQL Deploy
+    - name: Check out repo
       uses: actions/checkout@v3
+    - name: Azure SQL Deploy
       uses: azure/sql-action@v2
       with:        
         connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
