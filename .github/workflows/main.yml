@@ -21,7 +21,6 @@ jobs:
            echo "***************installed cli Edge build*******************"    
            echo "$CWD/canary-venv/bin" >> $GITHUB_PATH
            az --version
-           az login
       - name: Check out repository
         uses: actions/checkout@v3
       - name: 'Az CLI login with subscription'
@@ -30,6 +29,8 @@ jobs:
           client-id: ${{ secrets.AZURE_CLIENTID }}
           tenant-id: ${{ secrets.AZURE_TENANTID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTIONID }}
+        run:
+           az login
       - name: Unchecked Azure services access to database to check authentication
         uses: azure/sql-action@v2
         with:        
