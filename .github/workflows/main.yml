@@ -8,6 +8,9 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
+      - name: 'Az CLI login with subscription'
+        run:
+           az login
       - name: Unchecked Allow Azure services access to database to check authentication
         uses: azure/sql-action@v2
         with:        
