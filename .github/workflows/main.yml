@@ -11,17 +11,12 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
-      - name: 'Az OIDC login with federated principal'
+        
+      - name: Log in with Azure credentials of service principal
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZURE_CLIENTID }}
-          tenant-id: ${{ secrets.AZURE_TENANTID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTIONID }}
-      - name: 'Run Azure CLI commands'
-        run: |
-          az account show
-          az group list
-          pwd 
+          creds: '${{ secrets.AZURE_CREDENTIALS }}'
+       
       - name: Unchecked Allow Azure services access to database to check authentication
         uses: azure/sql-action@v2
         with:        
