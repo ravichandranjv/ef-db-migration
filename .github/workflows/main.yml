@@ -12,7 +12,9 @@ jobs:
     - name: 'Az CLI login with subscription'
       uses: azure/login@v1
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        client-id: ${{ secrets.AZURE_CLIENTID }}
+        tenant-id: ${{ secrets.AZURE_TENANTID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTIONID }}
     - name: Unchecked Azure services access to database to check authentication
       uses: azure/sql-action@v2
       with:        
