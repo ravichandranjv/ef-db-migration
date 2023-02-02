@@ -9,6 +9,10 @@ jobs:
     steps:
     - name: Check out repository
       uses: actions/checkout@v3
+    - name: 'Az CLI login with subscription'
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Unchecked Azure services access to database to check authentication
       uses: azure/sql-action@v2
       with:        
