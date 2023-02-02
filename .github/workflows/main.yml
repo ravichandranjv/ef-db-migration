@@ -9,7 +9,7 @@ jobs:
     steps:
     - name: Check out repository
       uses: actions/checkout@v3
-    - name: Azure SQL Deploy to check authentication
+    - name: Unchecked Azure services access to database to check authentication
       uses: azure/sql-action@v2
       with:        
         connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
