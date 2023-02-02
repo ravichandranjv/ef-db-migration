@@ -8,9 +8,12 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
-      - name: 'Az CLI login with subscription'
-        run:
-           az login
+      - name: 'Az login with service proncipal secret credentials'
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZURE_CLIENTID }}
+          tenant-id: ${{ secrets.AZURE_TENANTID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTIONID }}
       - name: Unchecked Allow Azure services access to database to check authentication
         uses: azure/sql-action@v2
         with:        
