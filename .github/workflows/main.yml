@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
-      - name: 'Az OIDC login with Powershell'
+      - name: 'Az OIDC login with federated principal'
         uses: azure/login@v1
         with:
           client-id: ${{ secrets.AZURE_CLIENTID }}
