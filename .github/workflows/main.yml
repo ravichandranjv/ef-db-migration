@@ -2,18 +2,28 @@ name: Deploy EF Azure Database
 on:
   push:
     branches: [ develop ]
+permissions:
+      id-token: write
+      contents: read
 jobs: 
   az-login-test:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
-      - name: 'Az login with service proncipal secret credentials'
+      - name: 'Az OIDC login with Powershell'
         uses: azure/login@v1
         with:
           client-id: ${{ secrets.AZURE_CLIENTID }}
           tenant-id: ${{ secrets.AZURE_TENANTID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTIONID }}
+          enable-AzPSSession: true
+      - name: 'Get resource group with PowerShell action'
+          uses: azure/powershell@v1
+          with:
+             inlineScript: |
+               Get-AzResourceGroup
+             azPSVersion: "latest"
       - name: Unchecked Allow Azure services access to database to check authentication
         uses: azure/sql-action@v2
         with:        
