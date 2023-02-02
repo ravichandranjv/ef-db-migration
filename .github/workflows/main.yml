@@ -3,6 +3,25 @@ on:
   push:
     branches: [ develop ]
 jobs: 
+  az-login-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name : Check Az version before installing
+        run: az --version
+        
+      - name: Installing Az CLI Edge build 
+        run: |
+           cd ../..
+           CWD="$(pwd)"
+           python3 -m venv canary-venv
+           . canary-venv/bin/activate
+           echo "***********activated virual environment**********" 
+           python3 -m pip install --upgrade pip
+           echo "***************started installing cli edge build******************"
+           pip3 install -q --upgrade --pre azure-cli --extra-index-url https://azurecliprod.blob.core.windows.net/edge --no-cache-dir --upgrade-strategy=eager
+           echo "***************installed cli Edge build*******************"    
+           echo "$CWD/canary-venv/bin" >> $GITHUB_PATH
+           az --version
   build:
     name: Build sql action
     runs-on: ubuntu-latest
