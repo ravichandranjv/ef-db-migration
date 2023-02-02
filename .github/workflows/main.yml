@@ -7,7 +7,7 @@ permissions:
       contents: read
 jobs: 
   az-login-test:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
@@ -17,13 +17,11 @@ jobs:
           client-id: ${{ secrets.AZURE_CLIENTID }}
           tenant-id: ${{ secrets.AZURE_TENANTID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTIONID }}
-          enable-AzPSSession: true
-      - name: 'Get resource group with PowerShell action'
-          uses: azure/powershell@v1
-          with:
-             inlineScript: |
-               Get-AzResourceGroup
-             azPSVersion: "latest"
+      - name: 'Run Azure CLI commands'
+        run: |
+          az account show
+          az group list
+          pwd 
       - name: Unchecked Allow Azure services access to database to check authentication
         uses: azure/sql-action@v2
         with:        
