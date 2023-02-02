@@ -21,6 +21,7 @@ jobs:
            echo "***************installed cli Edge build*******************"    
            echo "$CWD/canary-venv/bin" >> $GITHUB_PATH
            az --version
+           az login
       - name: Check out repository
         uses: actions/checkout@v3
       - name: 'Az CLI login with subscription'
