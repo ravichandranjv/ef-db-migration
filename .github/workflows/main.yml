@@ -9,7 +9,7 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v3
         
-      - name: Azure Login with service principal
+      - name: Azure Login with service principal after deleting registered app
         uses: azure/login@v1
         with:
           creds: '${{ secrets.AZURE_CREDENTIALS }}'
