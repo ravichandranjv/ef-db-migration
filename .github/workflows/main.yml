@@ -3,6 +3,10 @@ on:
   push:
     branches: [ develop ]
 
+permissions:
+      id-token: write
+      contents: read
+
 jobs: 
   az-login-test:
     runs-on: ubuntu-latest
@@ -10,7 +14,7 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v3
 
-      - name: 'Azure OIDC login with federated principal without permissions block'
+      - name: 'Azure OIDC login with federated principal'
         uses: azure/login@v1
         with:
           client-id: ${{ secrets.AZURE_CLIENTID }}
