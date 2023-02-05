@@ -7,10 +7,9 @@ jobs:
   s3_cdk_stack:
     runs-on: ubuntu-latest
     steps:
-    
       - name: Dotnet AWS CDK GitHub Actions
         uses: P47Phoenix/dotnet-cdk-action@v1.0.12
-      with:
+        with:
           cdk_subcommand: 'diff'
           actions_comment: true
         env:
