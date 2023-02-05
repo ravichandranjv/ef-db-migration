@@ -12,10 +12,11 @@ jobs:
         with:
           repository: ravichandranjv/cdk-stacks
           ref: develop
-      - name: Deploy s3 stack
+      - name: Destroy s3 stack
         uses: P47Phoenix/dotnet-cdk-action@v1.0.12
         with:
-          cdk_subcommand: 'deploy'
+          cdk_subcommand: 'destroy'
+          cdk_args: --force
           working_dir: 'src'
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
