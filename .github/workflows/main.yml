@@ -28,3 +28,38 @@ jobs:
           connection-string: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
           path: './Database.sqlproj'
           action: 'publish'
+  s3-cdk-stack-deploy:
+    runs-on: windows-latest
+    steps:
+      - name: .net AWS CDK GitHub Actions
+      uses: P47Phoenix/dotnet-cdk-action@v1.0.12
+      with:
+          cdk_subcommand: 'diff'
+          actions_comment: true
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: 'ap-south-1'
+
+      - name: cdk deploy
+        uses: P47Phoenix/dotnet-cdk-action@v1
+        with:
+          cdk_subcommand: 'deploy'
+          cdk_stack: 'CdkTipsTricksStack'
+          cdk_args: '--require-approval never'
+          actions_comment: false
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: 'ap-south-1'
+
+      - name: cdk synth
+        uses: P47Phoenix/dotnet-cdk-action@v1
+        with:
+          cdk_subcommand: 'synth'
+          cdk_version: '1.16.2'
+          working_dir: 'src'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: 'ap-south-1'
