@@ -1,16 +1,13 @@
-name: Deploy EF Azure Database
+name: Deploy AWS CDK Stack
 on:
   push:
     branches: [ develop ]
 
-permissions:
-      id-token: write
-      contents: read
-
 jobs: 
-  s3-cdk-stack-deploy:
+  s3_cdk_stack:
     runs-on: ubuntu-latest
     steps:
+    
       - name: Dotnet AWS CDK GitHub Actions
         uses: P47Phoenix/dotnet-cdk-action@v1.0.12
       with:
