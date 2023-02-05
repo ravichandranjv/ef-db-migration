@@ -5,14 +5,14 @@ on:
 
 jobs: 
   s3_cdk_stack:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: cdk deploy
         uses: P47Phoenix/dotnet-cdk-action@v1.0.12
         with:
           cdk_subcommand: 'deploy'
           cdk_stack: 'CdkTipsTricksStack'
-          cdk_args: '--app "S3CDKStackGithub" --require-approval never'
+          cdk_args: '--app "CdkTipTricks" --require-approval never'
           actions_comment: false
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
