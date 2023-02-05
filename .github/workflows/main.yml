@@ -5,7 +5,7 @@ on:
 
 jobs: 
   s3_cdk_stack:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: cdk deploy
         uses: P47Phoenix/dotnet-cdk-action@v1.0.12
