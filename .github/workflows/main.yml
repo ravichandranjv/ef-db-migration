@@ -11,7 +11,6 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: ravichandranjv/cdk-stacks
-    token: ${{ secrets.GH_PAT }} # `GH_PAT` is a secret that contains your PAT
       - name: print cdk version
         uses: P47Phoenix/dotnet-cdk-action@v1.0.12
         with:
