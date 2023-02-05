@@ -12,19 +12,11 @@ jobs:
         with:
           repository: ravichandranjv/cdk-stacks
           ref: develop
-      - name: diff
+      - name: Destroy s3 stack
         uses: P47Phoenix/dotnet-cdk-action@v1.0.12
         with:
-          cdk_subcommand: 'diff'
-          working_dir: 'src'
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: 'ap-south-1'
-      - name: Deploy s3 stack
-        uses: P47Phoenix/dotnet-cdk-action@v1.0.12
-        with:
-          cdk_subcommand: 'deploy'
+          cdk_subcommand: 'destroy'
+          cdk_args: --force
           working_dir: 'src'
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
