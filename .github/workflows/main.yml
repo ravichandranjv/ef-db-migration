@@ -11,8 +11,8 @@ jobs:
         uses: P47Phoenix/dotnet-cdk-action@v1.0.12
         with:
           cdk_subcommand: 'deploy'
-          cdk_stack: 'CdkTipsTricksStack'
-          cdk_args: '--path-to-application src/CdkTipsTricks/bin/debug/netcoreapp3.1 --require-approval never'
+          cdk_stack: 'CdkTipsTricksStack'CdkTipsTricks
+          cdk_args: '--require-approval never'
           actions_comment: false
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
