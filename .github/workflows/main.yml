@@ -12,7 +12,7 @@ jobs:
         with:
           cdk_subcommand: 'deploy'
           cdk_stack: 'CdkTipsTricksStack'
-          cdk_args: '--app dotnet run --project src/CdkTipsTricks/CdkTipsTricks.csproj CdkTipTricks --require-approval never'
+          cdk_args: '--app dotnet path-to-application src/CdkTipsTricks/bin/debug/netcoreapp3.1 CdkTipTricks --require-approval never'
           actions_comment: false
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
