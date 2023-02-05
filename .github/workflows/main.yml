@@ -9,19 +9,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-      - name: print cdk version
+      - name: destroy s3 stack
         uses: P47Phoenix/dotnet-cdk-action@v1.0.12
         with:
-          cdk_subcommand: 'version'
-      - name: cdk synth
-        uses: P47Phoenix/dotnet-cdk-action@v1.0.12
-        with:
-          cdk_subcommand: 'synth'
-          working_dir: 'src'
-      - name: deploy s3 stack
-        uses: P47Phoenix/dotnet-cdk-action@v1.0.12
-        with:
-          cdk_subcommand: 'deploy'
+          cdk_subcommand: 'destroy'
           working_dir: 'src'
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
