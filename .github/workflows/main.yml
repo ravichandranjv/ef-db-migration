@@ -17,7 +17,7 @@ jobs:
         uses: P47Phoenix/dotnet-cdk-action@v1.0.12
         with:
           cdk_subcommand: 'destroy'
-          cdk_args: --app cdk.out --require-approval never
+          cdk_args: --require-approval never
           working_dir: 'src'
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
