@@ -31,8 +31,8 @@ jobs:
   s3-cdk-stack-deploy:
     runs-on: windows-latest
     steps:
-      - name: .net AWS CDK GitHub Actions
-      uses: P47Phoenix/dotnet-cdk-action@v1.0.12
+      - name: Dotnet AWS CDK GitHub Actions
+        uses: P47Phoenix/dotnet-cdk-action@v1.0.12
       with:
           cdk_subcommand: 'diff'
           actions_comment: true
