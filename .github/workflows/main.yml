@@ -18,7 +18,7 @@ jobs:
           AWS_DEFAULT_REGION: 'ap-south-1'
 
       - name: cdk deploy
-        uses: P47Phoenix/dotnet-cdk-action@v1
+        uses: P47Phoenix/dotnet-cdk-action@v1.0.12
         with:
           cdk_subcommand: 'deploy'
           cdk_stack: 'CdkTipsTricksStack'
