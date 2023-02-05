@@ -11,6 +11,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: ravichandranjv/cdk-stacks
+          branch: develop
       - name: print cdk version
         uses: P47Phoenix/dotnet-cdk-action@v1.0.12
         with:
